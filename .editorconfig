@@ -1,0 +1,30 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.sln]
+indent_style = tab
+
+[*.cs]
+# Use braces everywhere
+csharp_prefer_braces = true:error
+csharp_preserve_single_line_blocks = true
+csharp_preserve_single_line_statements = true
+
+# One True Brace style
+csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+csharp_indent_case_contents_when_block = false
+
+# Prefix everything with `this.`
+dotnet_style_qualification_for_event = true:error
+dotnet_style_qualification_for_field = true:error
+dotnet_style_qualification_for_method = true:error
+dotnet_style_qualification_for_property = true:error

@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>dev.peelz.harvestmoonstweaks</AssemblyName>
+    <Product>HarvestMoonsTweaks</Product>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>HarvestMoonsTweaks</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>embedded</DebugType>
+    <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krafs.Publicizer" Version="2.2.1" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all"/>
+    <PackageReference Include="BepInEx.Core" Version="5.*" PrivateAssets="all"/>
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" PrivateAssets="all"/>
+    <PackageReference Include="LethalCompany.GameLibs.Steam" Version="*-*" PrivateAssets="all"/>
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.9" IncludeAssets="compile" PrivateAssets="all"/>
+    <PackageReference Include="TeamBMX.LobbyCompatibility" Version="1.*" PrivateAssets="all"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Publicize Include="BepInEx:BepInEx.Configuration.ConfigFile.OrphanedEntries" />
+  </ItemGroup>
+
+  <Target Name="ZipMod" AfterTargets="PostBuildEvent" Condition="$(Configuration) == 'Release'">
+    <RemoveDir Directories="$(OutputPath)/package" />
+    <ItemGroup>
+      <PackageFiles Include="$(MSBuildProjectDirectory)/LICENSE" />
+      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/README.md" />
+      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/CHANGELOG.md" />
+      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/manifest.json" />
+      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/icon.png" />
+      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/icon.png" />
+      <PackageFiles Include="$(TargetPath)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(OutputPath)/package" />
+    <ZipDirectory
+      SourceDirectory="$(OutputPath)/package"
+      DestinationFile="$(OutputPath)/package.zip"
+      Overwrite="true"
+    />
+  </Target>
+</Project>

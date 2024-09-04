@@ -1,0 +1,12 @@
+{
+  "name": "HarvestMoonsTweaks",
+  "author": "notpeelz",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/notpeelz/lc-harvestmoonstweaks",
+  "description": "A collection of tweaks/patches for Harvest Moons.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2100",
+    "BMX-LobbyCompatibility-1.2.0",
+    "Autumnis-HarvestMoons-1.4.8"
+  ]
+}

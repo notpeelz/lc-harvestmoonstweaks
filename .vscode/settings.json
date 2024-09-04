@@ -1,0 +1,16 @@
+{
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp",
+    "editor.formatOnSave": true
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "xml.format.enforceQuoteStyle": "preferred",
+  "xml.preferences.quoteStyle": "double",
+  "xml.format.closingBracketNewLine": true,
+  "xml.format.emptyElements": "collapse",
+  "xml.format.splitAttributes": "splitNewLine",
+  "xml.format.splitAttributesIndentSize": 1,
+  "xml.format.maxLineWidth": 100
+}
