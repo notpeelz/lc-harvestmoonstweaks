@@ -55,7 +55,6 @@
       <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/CHANGELOG.md" />
       <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/manifest.json" />
       <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/icon.png" />
-      <PackageFiles Include="$(MSBuildProjectDirectory)/thunderstore/icon.png" />
       <PackageFiles Include="$(TargetPath)" />
     </ItemGroup>
     <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(OutputPath)/package" />
