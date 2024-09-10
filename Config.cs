@@ -8,8 +8,6 @@ public class Config {
   public ConfigEntry<bool> SierraDisableInsideFog { get; }
 
   public Config(ConfigFile cfg) {
-    cfg.SaveOnConfigSet = false;
-
     const string SECTION_FRAY = "Fray";
     this.FrayDisableInsideFog = cfg.Bind<bool>(
       section: SECTION_FRAY,
@@ -28,6 +26,5 @@ public class Config {
 
     cfg.OrphanedEntries.Clear();
     cfg.Save();
-    cfg.SaveOnConfigSet = true;
   }
 }
